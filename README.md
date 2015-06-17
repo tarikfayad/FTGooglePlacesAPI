@@ -1,5 +1,13 @@
 #TFGooglePlacesAPI
 
+This is my ongoing attempt to update and flesh out the FTGooglePlacesAPI Cocoapod and to account for minor changes on Google's end. There's still a lot of work to do and not all of the code is as clean as it could be, but as I need it for work there should be more updates soon enough.
+
+##Main Differences
+ 1. Now requires at least [AFNetworking 2.5][4]
+ 2. Basic support for predicitve search results
+    - Just a heads up that results populated in the way will have a location of nil and you'll need to make a detail query in order to get the latitude and logitude.
+ 3. Updated a number of old parameters that were forcing me to refer to the originalResponseDictionary to get useful information
+
 An open-source iOS Objective-C library for querying [Google Places API][1] using simple callback-blocks based interface.
 
 Perform Google Places API requests with ease in a few lines of code. Library includes, but is not limited to, following:
@@ -33,16 +41,13 @@ Perform Google Places API requests with ease in a few lines of code. Library inc
 
 ### CocoaPods
 
-*FTGooglePlacesAPI* is available as a CocoaPod
-
-    pod 'FTGooglePlacesAPI'
+*TFGooglePlacesAPI* does not yet support Cocoapods
 
 ### Manual (or using git submodule)
- 1. Implement [AFNetworking 2.0][4]
-    - FTGooglePlacesAPI uses AFNetworking 2.0 for all of its networking. Why? Because it rocks!
+ 1. Implement [AFNetworking 2.5][4]
  2. Download source files from this repository
-    - Or use GIT submodule ( `git submodule add git@github.com:FuerteInternational/FTGooglePlacesAPI.git` )
- 3. Add all files from *FTGooglePlacesAPI* folder to your project's target
+    - Or use GIT submodule ( `git submodule add git@github.com:tarikfayad/TFGooglePlacesAPI.git` )
+ 3. Add all files from *TFGooglePlacesAPI* folder to your project's target
 
 ##Usage
 
@@ -57,7 +62,7 @@ You can take a look at the detailed example usage project *XcodeProject/FTGoogle
 
 In order to communicate with a Google Places API, you must first generate your own API key which you can get at [Google Play Developer Console][5]. You can also take a look at [Introduction - Google Places API][6].
 
-You must provide API key to a `FTGooglePlacesAPI` service before making any request using it. Good place for this code is the App Delegate.
+You must provide API key to a `TFGooglePlacesAPI` service before making any request using it. Good place for this code is the App Delegate.
 
 ```objective-c
 //  Provide API key to FTGooglePlacesAPIService before making any requests
@@ -125,7 +130,7 @@ Available methods are:
 ##Compatibility
 
  - iOS 6+
-    - Mainly because of a dependency on AFNetworking 2.0 (although it shouldn't be difficult for you to remove dependency on it)
+    - Mainly because of a dependency on AFNetworking 2.5 (although it shouldn't be difficult for you to remove dependency on it)
  - ARC
 
 ##Contact
@@ -144,9 +149,6 @@ Pull requests are very welcome expecting you follow few rules:
  - Make sure your changes didn't cause any trouble using included example project, unit tests and if appropriate, implement unit tests and example code for your newly added functionality
 
 ##Version history
-
-#### 1.1
- - Implemented deprecations for usage of `id` and `reference` properties as these has been deprecated by Google as of June 24, 2014. See [Deprecation notice in documentation](https://developers.google.com/places/documentation/details#deprecation) for more info.
 
 #### 1.0
  - First official public release
