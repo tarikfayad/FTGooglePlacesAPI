@@ -111,6 +111,13 @@
     _nextPageToken = [dictionary ftgp_nilledObjectForKey:@"next_page_token"];
     
     NSArray *results = [dictionary ftgp_nilledObjectForKey:@"results"];
+    
+    //Setting the case for autocomplete (as other search types don't return predictions)
+    NSArray *predictions = [dictionary ftgp_nilledObjectForKey:@"predictions"];
+    if (predictions) {
+        _results = [self ftgpr_parseResultsItemFromArray:predictions];
+        return;
+    }
     _results = [self ftgpr_parseResultsItemFromArray:results];
 }
 

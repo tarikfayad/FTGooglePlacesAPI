@@ -35,6 +35,7 @@
 #import "FTGooglePlacesAPIDictionaryRequest.h"
 #import "FTGooglePlacesAPINearbySearchRequest.h"
 #import "FTGooglePlacesAPITextSearchRequest.h"
+#import "TFGooglePlacesAPIAutocompleteSearchRequest.h"
 #import "FTGooglePlacesAPISearchResponse.h"
 #import "FTGooglePlacesAPISearchResultItem.h"
 #import "FTGooglePlacesAPIDetailRequest.h"

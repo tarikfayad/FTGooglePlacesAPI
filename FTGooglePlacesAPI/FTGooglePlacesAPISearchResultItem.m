@@ -111,6 +111,13 @@
     _placeId = [dictionary ftgp_nilledObjectForKey:@"place_id"];
     _name = [dictionary ftgp_nilledObjectForKey:@"name"];
     
+    //FOR AUTOCOMPLETE: using the terms section to spoof the item name
+    if (!_name) {
+        NSArray *termArray = [dictionary ftgp_nilledObjectForKey:@"terms"];
+        NSDictionary *firstTerm = [termArray firstObject];
+        _name = [firstTerm ftgp_nilledObjectForKey:@"value"];
+    }
+    
     
     //  location is nil by default on errors or returned invalid values of Lat and Lon
     _location = nil;
@@ -134,7 +141,20 @@
         
     }
     
-    _addressString = [dictionary ftgp_nilledObjectForKey:@"vicinity"];
+    _addressString = [dictionary ftgp_nilledObjectForKey:@"formatted_address"];
+    
+    //FOR AUTOCOMPLETE: using the terms section to spoof the address of the location
+    if (!_addressString) {
+        NSArray *termArray = [dictionary ftgp_nilledObjectForKey:@"terms"];
+        NSMutableString *address = [NSMutableString new];
+        for (NSDictionary *term in termArray) {
+            if (![term isEqual:[termArray firstObject]]) {
+                NSString *value = [term ftgp_nilledObjectForKey:@"value"];
+                [address appendString:[NSString stringWithFormat:@"%@ ", value]];
+            }
+        }
+        _addressString = address;
+    }
     
     //  Openeed state may or may not be present
     NSNumber *openedState = [dictionary ftgp_nilledValueForKeyPath:@"opening_hours.open_now"];

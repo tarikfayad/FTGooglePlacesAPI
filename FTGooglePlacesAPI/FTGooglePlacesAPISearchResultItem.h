@@ -47,9 +47,9 @@ typedef NS_ENUM(NSUInteger, FTGooglePlacesAPISearchResultItemOpenedState) {
  *  CLLocation representing results coordinates. If the returned coordinates were invalid,
  *  location will be nil
  */
-@property (nonatomic, strong, readonly) CLLocation *location;
+@property (nonatomic, strong) CLLocation *location;
 
-@property (nonatomic, strong, readonly) NSString *addressString;    // "vicinity" from the response
+@property (nonatomic, strong) NSString *addressString;    // "formatted_address" from the response
 @property (nonatomic, assign, readonly) FTGooglePlacesAPISearchResultItemOpenedState openedState;
 @property (nonatomic, strong, readonly) NSString *iconImageUrl;
 @property (nonatomic, assign, readonly) CGFloat rating;
