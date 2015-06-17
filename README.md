@@ -15,6 +15,7 @@ Perform Google Places API requests with ease in a few lines of code. Library inc
  - [Place Search][2]
      - Nearby Search (search places withing a specified area)
      - Text Search (search places based on a search string)
+     - Autocomplete (pull up predictive search results based on a search string)
  - [Place Details][3] (get more comprehensive information about a place)
 
 <table>
