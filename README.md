@@ -1,4 +1,4 @@
-#FTGooglePlacesAPI
+#TFGooglePlacesAPI
 
 An open-source iOS Objective-C library for querying [Google Places API][1] using simple callback-blocks based interface.
 
